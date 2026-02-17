@@ -29,7 +29,7 @@ function http_get(string $url): string {
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_TIMEOUT => 30,
-        CURLOPT_USERAGENT => 'DMR-Repeater-Tool/1.0 (amateur radio utility)',
+        CURLOPT_USERAGENT => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
     ]);
     $body = curl_exec($ch);
     $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -50,7 +50,7 @@ function http_post(string $url, array $fields): string {
         CURLOPT_TIMEOUT => 30,
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => http_build_query($fields),
-        CURLOPT_USERAGENT => 'DMR-Repeater-Tool/1.0 (amateur radio utility)',
+        CURLOPT_USERAGENT => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
     ]);
     $body = curl_exec($ch);
     $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);

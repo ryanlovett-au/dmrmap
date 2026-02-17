@@ -1,0 +1,1085 @@
+{
+    "type": "FeatureCollection",
+    "generated": "2026-02-17T06:24:56+00:00",
+    "source": "DMR Repeater Tool – rpt.vkdmr.com + ACMA RRL",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.119038,
+                    -35.365604
+                ]
+            },
+            "properties": {
+                "callsign": "VK1RBM",
+                "info": "Canberra, QF44np      (27)",
+                "dmr_id": "505101",
+                "client": "CANBERRA REGION AMATEUR RADIO CLUB INCORPORATED",
+                "location": "ISAACS RIDGE  ACT 2607",
+                "tx_mhz": 439.95,
+                "rx_mhz": 434.95,
+                "offset_mhz": 5,
+                "licence_no": "96410\/6",
+                "site_id": "9617"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.291215,
+                    -33.360078
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RAG",
+                "info": "Somersby  (26)",
+                "dmr_id": "505241",
+                "client": "Central Coast Amateur Radio Club Inc",
+                "location": "SOMERSBY  NSW 2250",
+                "tx_mhz": 438.325,
+                "rx_mhz": 433.325,
+                "offset_mhz": 5,
+                "licence_no": "1991697\/4",
+                "site_id": "5573"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    148.982967,
+                    -33.341852
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RAO",
+                "info": "Orange  (25)",
+                "dmr_id": "505229",
+                "client": "Orange & District Amateur Radio Club Inc",
+                "location": "MT CANOBOLAS  NSW 2800",
+                "tx_mhz": 433.725,
+                "rx_mhz": 438.725,
+                "offset_mhz": -5,
+                "licence_no": "44248\/1",
+                "site_id": "35066"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    148.957651,
+                    -33.883142
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RBT",
+                "info": "WyangalaDam  (23)",
+                "dmr_id": "505091",
+                "client": "Ross Byrne",
+                "location": "Woodstock  NSW",
+                "tx_mhz": 438.825,
+                "rx_mhz": 431.825,
+                "offset_mhz": 7,
+                "licence_no": "10668695\/2",
+                "site_id": "10037152"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    152.774113,
+                    -31.303962
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RCN",
+                "info": "PortMacquarie  (28)",
+                "dmr_id": "505059",
+                "client": "The Oxley Region Amateur Radio Club Inc.",
+                "location": "TELEGRAPH POINT  NSW 2440",
+                "tx_mhz": 438.425,
+                "rx_mhz": 433.425,
+                "offset_mhz": 5,
+                "licence_no": "44950\/1",
+                "site_id": "250450"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.157229,
+                    -29.635007
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RCV",
+                "info": "Grafton  (24)",
+                "dmr_id": "505230",
+                "client": "Anthony Smith",
+                "location": "PILLAR VALLEY  NSW 2462",
+                "tx_mhz": 439.9125,
+                "rx_mhz": 434.9125,
+                "offset_mhz": 5,
+                "licence_no": "164674\/3",
+                "site_id": "8202"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    148.556712,
+                    -32.154911
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RDD",
+                "info": "Dubbo  (19)",
+                "dmr_id": "505103",
+                "client": "Orana Region Amateur Radio Club",
+                "location": "BROCKLEHURST  NSW 2830",
+                "tx_mhz": 439.95,
+                "rx_mhz": 434.95,
+                "offset_mhz": 5,
+                "licence_no": "1230355\/1",
+                "site_id": "205480"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.093197,
+                    -30.345558
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RDO",
+                "info": "CoffsHarbour  (18)",
+                "dmr_id": "505075",
+                "client": "Coffs Harbour and District Amateur Radio Club",
+                "location": "Toormina  NSW",
+                "tx_mhz": 439.875,
+                "rx_mhz": 434.875,
+                "offset_mhz": 5,
+                "licence_no": "1251983\/4",
+                "site_id": "10005926"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    152.120421,
+                    -32.25852
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RGL",
+                "info": "UpperMyall  (19)",
+                "dmr_id": "505052",
+                "client": "Great Lakes Radio Club Incorporated",
+                "location": "UPPER MYALL  NSW 2425",
+                "tx_mhz": 439.775,
+                "rx_mhz": 434.775,
+                "offset_mhz": 5,
+                "licence_no": "1223371\/2",
+                "site_id": "7463"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.763092,
+                    -34.758567
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RGN",
+                "info": "Goulburn  (18)",
+                "dmr_id": "505224",
+                "client": "Goulburn & Southern Highlands Amateur Radio Society Inc",
+                "location": "MT GRAY  NSW 2580",
+                "tx_mhz": 439.95,
+                "rx_mhz": 434.95,
+                "offset_mhz": 5,
+                "licence_no": "26453\/1",
+                "site_id": "9491"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.179197,
+                    -33.79773
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RHT",
+                "info": "Chatswood  (19)",
+                "dmr_id": "505225",
+                "client": "Hornsby and District Amateur Radio Club Inc",
+                "location": "CHATSWOOD  NSW 2067",
+                "tx_mhz": 438.35,
+                "rx_mhz": 433.35,
+                "offset_mhz": 5,
+                "licence_no": "1901632\/1",
+                "site_id": "9015511"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    149.556506,
+                    -33.409572
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RKG",
+                "info": "WestBathurst  (16)",
+                "dmr_id": "505115",
+                "client": "Joshua Mesilane",
+                "location": "WEST BATHURST  NSW",
+                "tx_mhz": 439.875,
+                "rx_mhz": 434.875,
+                "offset_mhz": 5,
+                "licence_no": "10566320\/3",
+                "site_id": "10038392"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.036165,
+                    -34.040329
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RLE",
+                "info": "Engadine  (28)",
+                "dmr_id": "505212",
+                "client": "St George Amateur Radio Society",
+                "location": "ENGADINE  NSW 2233",
+                "tx_mhz": 438.425,
+                "rx_mhz": 433.425,
+                "offset_mhz": 5,
+                "licence_no": "58854\/1",
+                "site_id": "141527"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    150.954547,
+                    -34.263419
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RMP",
+                "info": "WollongongNsw2500  (28)",
+                "dmr_id": "505076",
+                "client": "Illawarra Amateur Radio Society",
+                "location": "MADDENS PLAINS  NSW 2508",
+                "tx_mhz": 438.725,
+                "rx_mhz": 433.725,
+                "offset_mhz": 5,
+                "licence_no": "1204416\/3",
+                "site_id": "8783"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.538894,
+                    -32.890196
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RNC",
+                "info": "Newcastle  (20)",
+                "dmr_id": "505051",
+                "client": "Gregory Williams",
+                "location": "WEST WALLSEND  NSW 2286",
+                "tx_mhz": 438.025,
+                "rx_mhz": 433.025,
+                "offset_mhz": 5,
+                "licence_no": "157698\/4",
+                "site_id": "5838"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    150.152139,
+                    -30.278821
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RNW",
+                "info": "NARRABRI  (21)",
+                "dmr_id": "505064",
+                "client": "Rodney Bailey",
+                "location": "MOUNT KAPUTAR NATIONAL PARK  NSW 2390",
+                "tx_mhz": 438.575,
+                "rx_mhz": 433.575,
+                "offset_mhz": 5,
+                "licence_no": "1281439\/2",
+                "site_id": "6292"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    152.13131,
+                    -32.73155
+                ]
+            },
+            "properties": {
+                "callsign": "VK2ROJ",
+                "info": "NelsonBay  (27)",
+                "dmr_id": "505017",
+                "client": "Port Stephens Amateur Radio Club Incorporated",
+                "location": "NELSON BAY  NSW 2315",
+                "tx_mhz": 439.7,
+                "rx_mhz": 434.7,
+                "offset_mhz": 5,
+                "licence_no": "1920353\/2",
+                "site_id": "6055"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.229112,
+                    -33.886561
+                ]
+            },
+            "properties": {
+                "callsign": "VK2ROT",
+                "info": "Paddington  (24)",
+                "dmr_id": "505123",
+                "client": "Waverley Amateur Radio Society",
+                "location": "PADDINGTON  NSW 2021",
+                "tx_mhz": 438.575,
+                "rx_mhz": 433.575,
+                "offset_mhz": 5,
+                "licence_no": "44886\/1",
+                "site_id": "3710"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    152.678285,
+                    -31.701304
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RPM",
+                "info": "PortMacquarie  (28)",
+                "dmr_id": "505106",
+                "client": "The Oxley Region Amateur Radio Club Inc.",
+                "location": "MIDDLE BROTHER  NSW 2439",
+                "tx_mhz": 438.525,
+                "rx_mhz": 433.525,
+                "offset_mhz": 5,
+                "licence_no": "1954984\/1",
+                "site_id": "7660"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.515857,
+                    -32.944671
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RUM",
+                "info": "Lower_Hunter  (21)",
+                "dmr_id": "505035",
+                "client": "Westlakes Amateur Radio Club Inc",
+                "location": "SUGARLOAF STATE CONSERVATION AREA  NSW 2323",
+                "tx_mhz": 438.625,
+                "rx_mhz": 433.625,
+                "offset_mhz": 5,
+                "licence_no": "42339\/3",
+                "site_id": "6112"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    151.055463,
+                    -33.698742
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RWI",
+                "info": "Dural  (23)",
+                "dmr_id": "505236",
+                "client": "AMATEUR RADIO NEW SOUTH WALES",
+                "location": "DURAL  NSW 2158",
+                "tx_mhz": 438.6,
+                "rx_mhz": 433.6,
+                "offset_mhz": 5,
+                "licence_no": "96403\/2",
+                "site_id": "4944"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    148.971656,
+                    -34.851109
+                ]
+            },
+            "properties": {
+                "callsign": "VK2RYS",
+                "info": "Yass  (27)",
+                "dmr_id": "505239",
+                "client": "Goulburn & Southern Highlands Amateur Radio Society Inc",
+                "location": "YASS  NSW",
+                "tx_mhz": 438.1,
+                "rx_mhz": 431.1,
+                "offset_mhz": 7,
+                "licence_no": "10475659\/1",
+                "site_id": "10010522"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.705835,
+                    -37.218631
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RAG",
+                "info": "RenniesHill  (27)",
+                "dmr_id": "505026",
+                "client": "PJ Weeks",
+                "location": "RENNIES HILL  VIC 3714",
+                "tx_mhz": 146.775,
+                "rx_mhz": 146.175,
+                "offset_mhz": 0.6,
+                "licence_no": "360010\/1",
+                "site_id": "37479"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.317257,
+                    -37.90393
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RAJ",
+                "info": "Upwey  (26)",
+                "dmr_id": "505038",
+                "client": "Peter James Chaplin",
+                "location": "UPWEY  VIC 3158",
+                "tx_mhz": 439.75,
+                "rx_mhz": 434.75,
+                "offset_mhz": 5,
+                "licence_no": "1926734\/7",
+                "site_id": "302509"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    144.34374,
+                    -36.782117
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RCQ",
+                "info": "Bendigo2M  (27)",
+                "dmr_id": "505061",
+                "client": "WE Grincais",
+                "location": "Junortoun  VIC",
+                "tx_mhz": 438.85,
+                "rx_mhz": 431.85,
+                "offset_mhz": 7,
+                "licence_no": "11233124\/2",
+                "site_id": "10024958"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.417202,
+                    -36.377066
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RDS",
+                "info": "Shepparton  (22)",
+                "dmr_id": "505013",
+                "client": "Peter Brennan",
+                "location": "SHEPPARTON  VIC 3630",
+                "tx_mhz": 438.55,
+                "rx_mhz": 431.55,
+                "offset_mhz": 7,
+                "licence_no": "10672882\/2",
+                "site_id": "11901"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.171749,
+                    -37.889412
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RGL",
+                "info": "MtAnakie  (25)",
+                "dmr_id": "505315",
+                "client": "THE WIRELESS INSTITUTE OF AUSTRALIA VICTORIAN DIVISION",
+                "location": "GLEN WAVERLEY  VIC 3150",
+                "tx_mhz": 445.5,
+                "rx_mhz": 440.45,
+                "offset_mhz": 5.05,
+                "licence_no": "213152\/5",
+                "site_id": "11661"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.67307,
+                    -36.849308
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RGV",
+                "info": "MtWombat  (24)",
+                "dmr_id": "505318",
+                "client": "THE WIRELESS INSTITUTE OF AUSTRALIA VICTORIAN DIVISION",
+                "location": "MT WOMBAT  VIC 3666",
+                "tx_mhz": 439.775,
+                "rx_mhz": 434.775,
+                "offset_mhz": 5,
+                "licence_no": "213166\/6",
+                "site_id": "11916"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    144.953894,
+                    -38.354463
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RIR",
+                "info": "Bendigo, VIC QF23dg   (30)",
+                "dmr_id": "505048",
+                "client": "Antony Langdon",
+                "location": "ARTHURS SEAT  VIC 3936",
+                "tx_mhz": 438.15,
+                "rx_mhz": 433.15,
+                "offset_mhz": 5,
+                "licence_no": "1327144\/1",
+                "site_id": "301127"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.98481,
+                    -37.043399
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RLE",
+                "info": "Mansfield  (29)",
+                "dmr_id": "505093",
+                "client": "Richard J Hoskin",
+                "location": "MAINDAMPLE  VIC 3722",
+                "tx_mhz": 438.125,
+                "rx_mhz": 433.125,
+                "offset_mhz": 5,
+                "licence_no": "1327485\/1",
+                "site_id": "11981"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.328712,
+                    -38.003847
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RMC",
+                "info": "NarreWarrenNorth  (23)",
+                "dmr_id": "505304",
+                "client": "MDRC Pty Ltd",
+                "location": "NARRE WARREN  VIC 3804",
+                "tx_mhz": 434.375,
+                "rx_mhz": 439.375,
+                "offset_mhz": -5,
+                "licence_no": "1325880\/2",
+                "site_id": "9001537"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.27631,
+                    -37.785559
+                ]
+            },
+            "properties": {
+                "callsign": "VK3ROO",
+                "info": "Croydon  (28)",
+                "dmr_id": "505072",
+                "client": "Andrew J Richards",
+                "location": "Croydon North  VIC",
+                "tx_mhz": 438.725,
+                "rx_mhz": 431.725,
+                "offset_mhz": 7,
+                "licence_no": "11324797\/1",
+                "site_id": "10026925"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.44378,
+                    -37.93236
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RSA",
+                "info": "Emerald  (19)",
+                "dmr_id": "505039",
+                "client": "THE SCOUT ASSOCIATION OF AUSTRALIA VICTORIAN BRANCH",
+                "location": "EMERALD  VIC 3782",
+                "tx_mhz": 439.65,
+                "rx_mhz": 434.65,
+                "offset_mhz": 5,
+                "licence_no": "1926733\/4",
+                "site_id": "42887"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.533453,
+                    -37.946841
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RSS",
+                "info": "Gembrook  (16)",
+                "dmr_id": "505045",
+                "client": "THE SCOUT ASSOCIATION OF AUSTRALIA VICTORIAN BRANCH",
+                "location": "Gembrook  VIC",
+                "tx_mhz": 439.975,
+                "rx_mhz": 434.975,
+                "offset_mhz": 5,
+                "licence_no": "1311345\/3",
+                "site_id": "10017666"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.173288,
+                    -37.8916
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RSU",
+                "info": "MtWaverley  (21)",
+                "dmr_id": "505065",
+                "client": "THE WIRELESS INSTITUTE OF AUSTRALIA VICTORIAN DIVISION",
+                "location": "Glen Waverley  VIC",
+                "tx_mhz": 439.925,
+                "rx_mhz": 434.925,
+                "offset_mhz": 5,
+                "licence_no": "213185\/4",
+                "site_id": "10008757"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.188612,
+                    -37.967779
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RSV",
+                "info": "Noble Park - HARAOA   (22)",
+                "dmr_id": "505015",
+                "client": "Hellenic Amateur Radio Association Of Australia",
+                "location": "NOBLE PARK  VIC 3174",
+                "tx_mhz": 439.425,
+                "rx_mhz": 434.425,
+                "offset_mhz": 5,
+                "licence_no": "1911536\/1",
+                "site_id": "139787"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    142.419533,
+                    -35.942707
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RTA",
+                "info": "Beulah  (18)",
+                "dmr_id": "505016",
+                "client": "Peter Stewart",
+                "location": "BEULAH  VIC 3395",
+                "tx_mhz": 438.125,
+                "rx_mhz": 431.125,
+                "offset_mhz": 7,
+                "licence_no": "10604333\/2",
+                "site_id": "140474"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    145.082817,
+                    -37.900025
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RWV",
+                "info": "Oakleigh-Portable  (23)",
+                "dmr_id": "505021",
+                "client": "Stephen Ireland",
+                "location": "Hughesdale  VIC 3163",
+                "tx_mhz": 439.35,
+                "rx_mhz": 434.35,
+                "offset_mhz": 5,
+                "licence_no": "10737753\/2",
+                "site_id": "10032642"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    146.406513,
+                    -38.153547
+                ]
+            },
+            "properties": {
+                "callsign": "VK3RYN",
+                "info": "YallournNorth  (22)",
+                "dmr_id": "505041",
+                "client": "Peter James Chaplin",
+                "location": "YALLOURN NORTH  VIC 3840",
+                "tx_mhz": 439.95,
+                "rx_mhz": 434.95,
+                "offset_mhz": 5,
+                "licence_no": "10004690\/1",
+                "site_id": "142735"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    152.591633,
+                    -27.502263
+                ]
+            },
+            "properties": {
+                "callsign": "VK4RAI",
+                "info": "Ipswich               (25)",
+                "dmr_id": "505090",
+                "client": "Ipswich and District Amateur Radio Club",
+                "location": "THE KNOBBY  QLD 4311",
+                "tx_mhz": 439.325,
+                "rx_mhz": 434.25,
+                "offset_mhz": 5.075,
+                "licence_no": "1403294\/1",
+                "site_id": "14187"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    150.576557,
+                    -23.337255
+                ]
+            },
+            "properties": {
+                "callsign": "VK4RAR",
+                "info": "Rockhampton           (21)",
+                "dmr_id": "505073",
+                "client": "Rockhampton and District Amateur Radio Club",
+                "location": "MT ARCHER  QLD 4701",
+                "tx_mhz": 438.225,
+                "rx_mhz": 433.225,
+                "offset_mhz": 5,
+                "licence_no": "1401492\/2",
+                "site_id": "17427"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.128853,
+                    -27.553116
+                ]
+            },
+            "properties": {
+                "callsign": "VK4RBA",
+                "info": "Brisbane              (24)",
+                "dmr_id": "505057",
+                "client": "BRISBANE AMATEUR RADIO CLUB INCORPORATED",
+                "location": "Rochedale  QLD",
+                "tx_mhz": 439.95,
+                "rx_mhz": 434.95,
+                "offset_mhz": 5,
+                "licence_no": "1415388\/5",
+                "site_id": "10005863"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    153.259931,
+                    -27.882998
+                ]
+            },
+            "properties": {
+                "callsign": "VK4RBT",
+                "info": "GoldCoastNth  (21)",
+                "dmr_id": "505417",
+                "client": "Gold Coast Amateur Radio Society Inc",
+                "location": "WONGAWALLAN  QLD 4209",
+                "tx_mhz": 439.825,
+                "rx_mhz": 434.825,
+                "offset_mhz": 5,
+                "licence_no": "1423601\/4",
+                "site_id": "13498"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    150.5357,
+                    -23.337888
+                ]
+            },
+            "properties": {
+                "callsign": "VK4ROK",
+                "info": "NormanGardens  (27)",
+                "dmr_id": "505127",
+                "client": "John Wright",
+                "location": "Norman Gardens  QLD",
+                "tx_mhz": 438.6125,
+                "rx_mhz": 431.6125,
+                "offset_mhz": 7,
+                "licence_no": "12916622\/1",
+                "site_id": "10024957"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    139.28533,
+                    -35.125134
+                ]
+            },
+            "properties": {
+                "callsign": "VK5RMU",
+                "info": "MurrayBridge  (28)",
+                "dmr_id": "505096",
+                "client": "Peter Fauth",
+                "location": "Murray Bridge  SA",
+                "tx_mhz": 438.9125,
+                "rx_mhz": 431.9125,
+                "offset_mhz": 7,
+                "licence_no": "11748980\/1",
+                "site_id": "10030879"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    138.748772,
+                    -34.813759
+                ]
+            },
+            "properties": {
+                "callsign": "VK5RWN",
+                "info": "Modbury  (18)",
+                "dmr_id": "505089",
+                "client": "Amateur Radio Experimenter's Group Inc.",
+                "location": "BANKSIA PARK  SA 5091",
+                "tx_mhz": 438.9,
+                "rx_mhz": 431.9,
+                "offset_mhz": 7,
+                "licence_no": "1907712\/5",
+                "site_id": "44482"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    147.319706,
+                    -42.862334
+                ]
+            },
+            "properties": {
+                "callsign": "VK7RAD",
+                "info": "Hobart                (22)",
+                "dmr_id": "505001",
+                "client": "Radio and Electronics Association of Southern Tasmania Inc",
+                "location": "HOBART  TAS 7009",
+                "tx_mhz": 438.675,
+                "rx_mhz": 439.975,
+                "offset_mhz": -1.3,
+                "licence_no": "318575\/6",
+                "site_id": "305537"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    147.266427,
+                    -42.740275
+                ]
+            },
+            "properties": {
+                "callsign": "VK7RAK",
+                "info": "GagebrookHobart  (26)",
+                "dmr_id": "505003",
+                "client": "Danny John Moss",
+                "location": "GAGEBROOK TAS  TAS 7030",
+                "tx_mhz": 438.7,
+                "rx_mhz": 433.7,
+                "offset_mhz": 5,
+                "licence_no": "1182384\/1",
+                "site_id": "136218"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    130.833752,
+                    -12.453664
+                ]
+            },
+            "properties": {
+                "callsign": "VK8RDD",
+                "info": "Darwin                (25)",
+                "dmr_id": "505118",
+                "client": "Simon C Rice",
+                "location": "LARRAKEYAH  NT",
+                "tx_mhz": 438.8,
+                "rx_mhz": 431.8,
+                "offset_mhz": 7,
+                "licence_no": "12466064\/1",
+                "site_id": "10038586"
+            }
+        }
+    ]
+}

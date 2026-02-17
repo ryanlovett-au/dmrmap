@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DMR Map – dmrmap.cloud</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin="anonymous" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-dark: #1a1d23;
+      --bg-card: #23272f;
+      --bg-surface: #2a2f38;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.3);
+      --green: #22c55e;
+      --orange: #f59e0b;
+      --red: #ef4444;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: #334155;
+      --radius: 10px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 1000;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px; color: #fff;
+      letter-spacing: -0.5px;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+
+    .site-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .site-title span {
+      color: var(--accent);
+    }
+
+    .site-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stat-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      background: var(--bg-surface);
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    .stat-badge .dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 6px rgba(34, 197, 94, 0.5);
+    }
+
+    .stat-badge strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .btn-about {
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-about:hover {
+      background: var(--border);
+      color: var(--text-primary);
+    }
+
+    /* ── Map ── */
+    #map {
+      flex: 1;
+      z-index: 1;
+    }
+
+    /* ── Callsign labels on the map ── */
+    .callsign-label {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 7px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      text-align: center;
+      line-height: 1;
+    }
+
+    /* ── Marker dot ── */
+    .marker-dot {
+      width: 14px; height: 14px;
+      background: var(--accent);
+      border: 2px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4), 0 0 10px var(--accent-glow);
+    }
+
+    /* ── Popup styling ── */
+    .leaflet-popup-content-wrapper {
+      background: var(--bg-card) !important;
+      color: var(--text-primary) !important;
+      border-radius: var(--radius) !important;
+      border: 1px solid var(--border) !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5) !important;
+      padding: 0 !important;
+    }
+
+    .leaflet-popup-tip {
+      background: var(--bg-card) !important;
+      border-right: 1px solid var(--border) !important;
+      border-bottom: 1px solid var(--border) !important;
+    }
+
+    .leaflet-popup-content {
+      margin: 0 !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+      min-width: 280px !important;
+    }
+
+    .leaflet-popup-close-button {
+      color: var(--text-muted) !important;
+      font-size: 20px !important;
+      top: 6px !important;
+      right: 6px !important;
+      padding: 0 !important;
+      width: 28px !important;
+      height: 28px !important;
+      line-height: 28px !important;
+      text-align: center !important;
+      z-index: 10;
+    }
+
+    .leaflet-popup-close-button:hover {
+      color: var(--text-primary) !important;
+    }
+
+    .popup-inner {
+      padding: 0;
+    }
+
+    .popup-header {
+      padding: 14px 16px;
+      background: linear-gradient(135deg, rgba(59,130,246,0.15), rgba(99,102,241,0.1));
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .popup-header .callsign {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .popup-header .dmr-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .popup-body {
+      padding: 12px 16px;
+    }
+
+    .popup-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(51,65,85,0.4);
+    }
+
+    .popup-row:last-child {
+      border-bottom: none;
+    }
+
+    .popup-row .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .popup-row .value {
+      font-size: 13px;
+      color: var(--text-primary);
+      font-weight: 500;
+      text-align: right;
+      max-width: 60%;
+    }
+
+    .popup-freqs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 10px 16px;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .freq-box {
+      text-align: center;
+      padding: 8px;
+      border-radius: 6px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+
+    .freq-box .freq-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .freq-box .freq-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .freq-box.tx .freq-value { color: var(--red); }
+    .freq-box.rx .freq-value { color: var(--green); }
+
+    .popup-footer {
+      padding: 8px 16px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .popup-footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .popup-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── About panel ── */
+    .about-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-overlay.active {
+      display: flex;
+    }
+
+    .about-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 560px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+    }
+
+    .about-panel-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .about-panel-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .about-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    .about-close:hover { color: var(--text-primary); }
+
+    .about-content {
+      padding: 20px 24px;
+    }
+
+    .about-content h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 16px 0 8px;
+    }
+
+    .about-content h3:first-child { margin-top: 0; }
+
+    .about-content p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .about-content a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .about-content a:hover {
+      text-decoration: underline;
+    }
+
+    .about-content .attribution-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-content .attribution-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(51,65,85,0.4);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .about-content .attribution-list li:last-child {
+      border-bottom: none;
+    }
+
+    .about-content .attribution-list strong {
+      color: var(--text-primary);
+    }
+
+    .generated-ts {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      background: var(--bg-surface);
+      padding: 6px 10px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    /* ── Leaflet control overrides ── */
+    .leaflet-control-zoom a {
+      background: var(--bg-card) !important;
+      color: var(--text-primary) !important;
+      border-color: var(--border) !important;
+    }
+
+    .leaflet-control-zoom a:hover {
+      background: var(--bg-surface) !important;
+    }
+
+    .leaflet-control-attribution {
+      background: rgba(26, 29, 35, 0.85) !important;
+      color: var(--text-muted) !important;
+      font-size: 11px !important;
+    }
+
+    .leaflet-control-attribution a {
+      color: var(--text-secondary) !important;
+    }
+
+    /* ── Loading state ── */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-dark);
+      z-index: 3000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      transition: opacity 0.4s ease;
+    }
+
+    .loading-overlay.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .loading-spinner {
+      width: 40px; height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      header { padding: 0 12px; height: 48px; }
+      .site-url { display: none; }
+      .stat-badge { padding: 4px 8px; font-size: 12px; }
+      .btn-about { padding: 5px 10px; font-size: 12px; }
+      .site-title { font-size: 16px; }
+      .logo { width: 30px; height: 30px; font-size: 12px; }
+      .callsign-label { font-size: 10px; padding: 2px 5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Loading screen -->
+  <div class="loading-overlay" id="loading">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading repeater data&hellip;</div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-left">
+      <div class="logo">DMR</div>
+      <div class="site-title"><span>DMR</span> Map</div>
+      <div class="site-url">dmrmap.cloud</div>
+    </div>
+    <div class="header-right">
+      <div class="stat-badge">
+        <span class="dot"></span>
+        <strong id="repeater-count">--</strong> repeaters
+      </div>
+      <button class="btn-about" id="btn-about">About</button>
+    </div>
+  </header>
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- About panel -->
+  <div class="about-overlay" id="about-overlay">
+    <div class="about-panel">
+      <div class="about-panel-header">
+        <h2>About DMR Map</h2>
+        <button class="about-close" id="about-close">&times;</button>
+      </div>
+      <div class="about-content">
+        <h3>What is this?</h3>
+        <p>
+          DMR Map is an interactive map of all active DMR (Digital Mobile Radio)
+          repeaters on the Australian VK DMR network. Each marker shows the repeater
+          callsign, and clicking it reveals detailed information including transmit/receive
+          frequencies, licensee, location, and ACMA licence reference.
+        </p>
+
+        <h3>How is the data generated?</h3>
+        <p>
+          A PHP command-line tool scrapes the live repeater list from the
+          <a href="http://rpt.vkdmr.com/ipsc/_status.html" target="_blank" rel="noopener">VK DMR network status page</a>,
+          extracts each repeater callsign, then looks up the corresponding licence on the
+          <a href="https://web.acma.gov.au/rrl/" target="_blank" rel="noopener">ACMA Register of Radiocommunications Licences (RRL)</a>
+          to retrieve TX/RX frequencies, site coordinates (latitude and longitude), and licensee details.
+          The results are exported as GeoJSON, KML, and CSV.
+        </p>
+        <p>
+          Last generated: <span class="generated-ts" id="generated-ts">--</span>
+        </p>
+
+        <h3>Data Sources &amp; Attribution</h3>
+        <ul class="attribution-list">
+          <li>
+            <strong>Repeater Data:</strong>
+            Sourced from the <a href="http://rpt.vkdmr.com/" target="_blank" rel="noopener">VK DMR Network</a>
+            (rpt.vkdmr.com). The VK DMR network provides the live status and listing of
+            DMR repeaters across Australia.
+          </li>
+          <li>
+            <strong>Licence &amp; Site Data:</strong>
+            Retrieved from the <a href="https://web.acma.gov.au/rrl/" target="_blank" rel="noopener">Australian Communications
+            and Media Authority (ACMA)</a> Register of Radiocommunications Licences.
+            Frequencies, site coordinates, and licensee information are sourced from the ACMA RRL.
+          </li>
+          <li>
+            <strong>Map Tiles:</strong>
+            &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors.
+            Tiles served via OpenStreetMap.
+          </li>
+        </ul>
+
+        <h3>Source Code</h3>
+        <p>
+          This project is open source. View the code, report issues, or contribute on
+          <a href="https://github.com/ryanlovett-au/dmrmap" target="_blank" rel="noopener">GitHub</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin="anonymous"></script>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ── Initialise map ──
+      const map = L.map('map', {
+        center: [-27, 134],
+        zoom: 5,
+        zoomControl: true,
+      });
+
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' +
+          ' | Repeater data: <a href="http://rpt.vkdmr.com/" target="_blank">VK DMR</a>' +
+          ' | Licence data: <a href="https://web.acma.gov.au/rrl/" target="_blank">ACMA RRL</a>',
+      }).addTo(map);
+
+      // ── About panel toggle ──
+      const aboutOverlay = document.getElementById('about-overlay');
+      document.getElementById('btn-about').addEventListener('click', () => {
+        aboutOverlay.classList.add('active');
+      });
+      document.getElementById('about-close').addEventListener('click', () => {
+        aboutOverlay.classList.remove('active');
+      });
+      aboutOverlay.addEventListener('click', (e) => {
+        if (e.target === aboutOverlay) aboutOverlay.classList.remove('active');
+      });
+
+      // ── Helper: format frequency ──
+      function fmtFreq(mhz) {
+        if (mhz === null || mhz === undefined || mhz === '') return '—';
+        return parseFloat(mhz).toFixed(4);
+      }
+
+      function fmtOffset(offset) {
+        if (offset === null || offset === undefined || offset === '') return '—';
+        const v = parseFloat(offset);
+        return (v >= 0 ? '+' : '') + v.toFixed(3) + ' MHz';
+      }
+
+      // ── Build popup HTML ──
+      function popupHTML(p) {
+        let html = '<div class="popup-inner">';
+
+        // Header
+        html += '<div class="popup-header">';
+        html += '<span class="callsign">' + esc(p.callsign) + '</span>';
+        if (p.dmr_id) {
+          html += '<span class="dmr-id">ID ' + esc(p.dmr_id) + '</span>';
+        }
+        html += '</div>';
+
+        // Frequency boxes (from the user's perspective: user TX = repeater RX, user RX = repeater TX)
+        if (p.tx_mhz || p.rx_mhz) {
+          html += '<div class="popup-freqs">';
+          html += '<div class="freq-box rx">';
+          html += '<div class="freq-label">User RX</div>';
+          html += '<div class="freq-value">' + fmtFreq(p.tx_mhz) + '</div>';
+          html += '</div>';
+          html += '<div class="freq-box tx">';
+          html += '<div class="freq-label">User TX</div>';
+          html += '<div class="freq-value">' + fmtFreq(p.rx_mhz) + '</div>';
+          html += '</div>';
+          html += '</div>';
+        }
+
+        // Body rows
+        html += '<div class="popup-body">';
+        if (p.offset_mhz !== null && p.offset_mhz !== undefined) {
+          // Negate the offset to show from user's perspective (user TX - user RX)
+          html += row('Offset', fmtOffset(-p.offset_mhz));
+        }
+        if (p.client) html += row('Licensee', esc(p.client));
+        if (p.location) html += row('Location', esc(p.location));
+        html += '</div>';
+
+        // Footer
+        if (p.licence_no) {
+          html += '<div class="popup-footer">';
+          html += '<span>ACMA Licence ' + esc(p.licence_no) + '</span>';
+          html += '<a href="https://web.acma.gov.au/rrl/register_search.search_dispatcher?pSEARCH_TYPE=Licences&pSUB_TYPE=Callsign&pEXACT_IND=matches&pQRY=' +
+                  encodeURIComponent(p.callsign) + '" target="_blank" rel="noopener">View on ACMA &rarr;</a>';
+          html += '</div>';
+        }
+
+        html += '</div>';
+        return html;
+      }
+
+      function row(label, value) {
+        return '<div class="popup-row"><span class="label">' + label +
+               '</span><span class="value">' + value + '</span></div>';
+      }
+
+      function esc(s) {
+        if (!s) return '';
+        const d = document.createElement('div');
+        d.textContent = s;
+        return d.innerHTML;
+      }
+
+      // ── Load GeoJSON ──
+      fetch('data/dmr_repeaters.geojson')
+        .then(r => {
+          if (!r.ok) throw new Error('Failed to load GeoJSON (' + r.status + ')');
+          return r.json();
+        })
+        .then(data => {
+          // Update generated timestamp in user's local time with timezone
+          if (data.generated) {
+            const d = new Date(data.generated);
+            const locale = navigator.language || 'en-AU';
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            const dateStr = d.toLocaleDateString(locale, { year:'numeric', month:'short', day:'numeric' });
+            const timeStr = d.toLocaleTimeString(locale, { hour:'2-digit', minute:'2-digit' });
+            const tzAbbr = d.toLocaleTimeString(locale, { timeZoneName:'short' }).split(' ').pop();
+            document.getElementById('generated-ts').textContent =
+              dateStr + ' ' + timeStr + ' ' + tzAbbr;
+          }
+
+          // Count and display
+          const count = data.features ? data.features.length : 0;
+          document.getElementById('repeater-count').textContent = count;
+
+          // Add GeoJSON layer
+          const geoLayer = L.geoJSON(data, {
+            pointToLayer: function(feature, latlng) {
+              // Create a circle marker (the dot)
+              const marker = L.marker(latlng, {
+                icon: L.divIcon({
+                  className: '',
+                  html: '<div class="marker-dot"></div>',
+                  iconSize: [14, 14],
+                  iconAnchor: [7, 7],
+                  popupAnchor: [0, -10],
+                }),
+              });
+
+              // Permanent callsign tooltip
+              marker.bindTooltip(feature.properties.callsign, {
+                permanent: true,
+                direction: 'top',
+                offset: [0, -12],
+                className: 'callsign-label',
+              });
+
+              return marker;
+            },
+            onEachFeature: function(feature, layer) {
+              layer.bindPopup(popupHTML(feature.properties), {
+                maxWidth: 320,
+                minWidth: 280,
+              });
+            },
+          }).addTo(map);
+
+          // Fit map to markers
+          if (count > 0) {
+            map.fitBounds(geoLayer.getBounds().pad(0.05));
+          }
+
+          // Hide loading screen
+          const loading = document.getElementById('loading');
+          loading.classList.add('fade-out');
+          setTimeout(() => loading.style.display = 'none', 500);
+        })
+        .catch(err => {
+          console.error('Error loading repeater data:', err);
+          const loading = document.getElementById('loading');
+          loading.querySelector('.loading-spinner').style.display = 'none';
+          loading.querySelector('.loading-text').textContent =
+            'Error loading data. Run the PHP tool first to generate dmr_repeaters.geojson';
+        });
+
+    })();
+  </script>
+</body>
+</html>

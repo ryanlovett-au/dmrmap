@@ -444,6 +444,51 @@ function generate_geojson(array $repeaters, string $filename): void {
 }
 
 // ---------------------------------------------------------------------------
+// Load existing GeoJSON as a cache keyed by callsign
+// ---------------------------------------------------------------------------
+function load_existing_cache(string $filename): array {
+    if (!file_exists($filename)) {
+        return [];
+    }
+
+    $json = file_get_contents($filename);
+    $data = json_decode($json, true);
+    if (!$data || empty($data['features'])) {
+        return [];
+    }
+
+    $cache = [];
+    foreach ($data['features'] as $feature) {
+        $p = $feature['properties'] ?? [];
+        $coords = $feature['geometry']['coordinates'] ?? [null, null];
+
+        $callsign = $p['callsign'] ?? null;
+        if (!$callsign) continue;
+
+        $cache[$callsign] = [
+            'licence_no' => $p['licence_no'] ?? null,
+            'client'     => $p['client'] ?? null,
+            'site_id'    => $p['site_id'] ?? null,
+            'site_name'  => $p['location'] ?? null,
+            'tx'         => $p['tx_mhz'] ?? null,
+            'rx'         => $p['rx_mhz'] ?? null,
+            'lon'        => $coords[0] ?? null,
+            'lat'        => $coords[1] ?? null,
+            'location'   => $p['location'] ?? null,
+        ];
+    }
+
+    return $cache;
+}
+
+function is_cache_complete(array $cached): bool {
+    return $cached['tx'] !== null
+        && $cached['rx'] !== null
+        && $cached['lat'] !== null
+        && $cached['lon'] !== null;
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 function main(): void {
@@ -452,14 +497,43 @@ function main(): void {
     // Step 1: Get repeater list
     $repeaters = fetch_repeater_list();
 
-    // Step 2 & 3: Look up each callsign on ACMA
+    // Load existing GeoJSON as a cache
+    $cache = load_existing_cache(OUTPUT_GEOJSON);
+    if (!empty($cache)) {
+        echo "  Loaded " . count($cache) . " cached repeaters from existing GeoJSON.\n\n";
+    }
+
+    // Step 2 & 3: Look up each callsign on ACMA (or use cache)
     $results = [];
     $total = count($repeaters);
     $i = 0;
+    $cached_count = 0;
 
     foreach ($repeaters as $callsign => $rpt) {
         $i++;
-        echo "  [$i/$total] Looking up $callsign ... ";
+        echo "  [$i/$total] $callsign ... ";
+
+        // Use cached data if we already have complete info for this callsign
+        if (isset($cache[$callsign]) && is_cache_complete($cache[$callsign])) {
+            $results[] = array_merge($rpt, $cache[$callsign]);
+            $cached_count++;
+            echo "cached\n";
+            continue;
+        }
+
+        // Only VKxRxx callsigns are repeaters with ACMA records
+        if (!preg_match('/^VK\dR/', $callsign)) {
+            echo "skipped (not a repeater callsign)\n";
+            $results[] = array_merge($rpt, [
+                'licence_no' => null, 'client' => null,
+                'site_id' => null, 'site_name' => null,
+                'tx' => null, 'rx' => null,
+                'lat' => null, 'lon' => null, 'location' => null,
+            ]);
+            continue;
+        }
+
+        echo "querying ACMA ... ";
 
         try {
             $acma = acma_lookup_callsign($callsign);
@@ -517,6 +591,8 @@ function main(): void {
             ]);
         }
     }
+
+    echo "\n  Used cache for $cached_count of $total repeaters.\n";
 
     // Step 4: Generate outputs
     $with_coords = array_filter($results, fn($r) => $r['lat'] !== null);

@@ -15,8 +15,8 @@ define('VKDMR_URL', 'http://rpt.vkdmr.com/ipsc/_status.html');
 define('ACMA_SEARCH_URL', 'https://web.acma.gov.au/rrl/register_search.search_dispatcher');
 define('ACMA_SITE_URL', 'https://web.acma.gov.au/rrl/site_search.site_lookup');
 define('ACMA_LICENCE_URL', 'https://web.acma.gov.au/rrl/licence_search.licence_lookup');
-define('OUTPUT_KML', __DIR__ . '/dmr_repeaters.kml');
-define('OUTPUT_CSV', __DIR__ . '/dmr_repeaters.csv');
+define('OUTPUT_KML', __DIR__ . '/site/data/dmr_repeaters.kml');
+define('OUTPUT_CSV', __DIR__ . '/site/data/dmr_repeaters.csv');
 define('OUTPUT_GEOJSON', __DIR__ . '/site/data/dmr_repeaters.geojson');
 define('RATE_LIMIT_MS', 500); // ms between ACMA requests to be polite
 

@@ -141,6 +141,90 @@
       color: var(--text-primary);
     }
 
+    /* ── Download dropdown ── */
+    .dropdown {
+      position: relative;
+    }
+
+    .btn-download {
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-download:hover {
+      background: var(--border);
+      color: var(--text-primary);
+    }
+
+    .btn-download svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      min-width: 200px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      z-index: 1100;
+      overflow: hidden;
+    }
+
+    .dropdown-menu.open {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.15s;
+      border-bottom: 1px solid rgba(51,65,85,0.4);
+    }
+
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+    }
+
+    .dropdown-menu .file-ext {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
     /* ── Map ── */
     #map {
       flex: 1;
@@ -502,6 +586,7 @@
       .site-url { display: none; }
       .stat-badge { padding: 4px 8px; font-size: 12px; }
       .btn-about { padding: 5px 10px; font-size: 12px; }
+      .btn-download { padding: 5px 10px; font-size: 12px; }
       .site-title { font-size: 16px; }
       .logo { width: 30px; height: 30px; font-size: 12px; }
       .callsign-label { font-size: 10px; padding: 2px 5px; }
@@ -527,6 +612,27 @@
       <div class="stat-badge">
         <span class="dot"></span>
         <strong id="repeater-count">--</strong> repeaters
+      </div>
+      <div class="dropdown" id="download-dropdown">
+        <button class="btn-download" id="btn-download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download
+        </button>
+        <div class="dropdown-menu" id="download-menu">
+          <a href="data/dmr_repeaters.geojson" download>
+            <span class="file-ext">GeoJSON</span> GeoJSON data
+          </a>
+          <a href="data/dmr_repeaters.kml" download>
+            <span class="file-ext">KML</span> Google Earth
+          </a>
+          <a href="data/dmr_repeaters.csv" download>
+            <span class="file-ext">CSV</span> Spreadsheet
+          </a>
+        </div>
       </div>
       <button class="btn-about" id="btn-about">About</button>
     </div>
@@ -617,6 +723,15 @@
           ' | Repeater data: <a href="http://rpt.vkdmr.com/" target="_blank">VK DMR</a>' +
           ' | Licence data: <a href="https://web.acma.gov.au/rrl/" target="_blank">ACMA RRL</a>',
       }).addTo(map);
+
+      // ── Download dropdown toggle ──
+      const dlBtn = document.getElementById('btn-download');
+      const dlMenu = document.getElementById('download-menu');
+      dlBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dlMenu.classList.toggle('open');
+      });
+      document.addEventListener('click', () => dlMenu.classList.remove('open'));
 
       // ── About panel toggle ──
       const aboutOverlay = document.getElementById('about-overlay');
